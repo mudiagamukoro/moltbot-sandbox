@@ -268,20 +268,10 @@ if (isOpenAI) {
 } else {
   config.agents.defaults.model.primary = 'anthropic/claude-opus-4-5';
 }
-// ============================================================
-// SANITIZE BROWSER PROFILE (prevents boot failure)
-// ============================================================
-config.browser = config.browser || {};
-config.browser.profiles = config.browser.profiles || {};
-config.browser.profiles.cloudflare = config.browser.profiles.cloudflare || {};
+// DISABLE Cloudflare browser integration (temporary for stability)
+delete config.browser;
 
-const cfProfile = config.browser.profiles.cloudflare;
 
-// Fix: clawdbot expects browser.profiles.cloudflare.color to be a STRING.
-// If it's missing/undefined/null/empty, set a safe default.
-if (cfProfile.color == null || typeof cfProfile.color !== "string" || cfProfile.color.trim() === "") {
-  cfProfile.color = "blue";
-}
 
 // Remove any keys that are literally undefined (JSON.parse won't create undefined,
 // but your code or other versions might attach it before writing)
