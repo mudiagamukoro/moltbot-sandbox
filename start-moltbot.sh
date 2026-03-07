@@ -273,6 +273,8 @@ delete config.browser;
 
 
 
+
+
 // Remove any keys that are literally undefined (JSON.parse won't create undefined,
 // but your code or other versions might attach it before writing)
 for (const k of Object.keys(cfProfile)) {
