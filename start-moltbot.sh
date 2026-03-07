@@ -277,9 +277,7 @@ delete config.browser;
 
 // Remove any keys that are literally undefined (JSON.parse won't create undefined,
 // but your code or other versions might attach it before writing)
-for (const k of Object.keys(cfProfile)) {
-  if (cfProfile[k] === undefined) delete cfProfile[k];
-}
+
 
 fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
 console.log('Configuration updated successfully');
